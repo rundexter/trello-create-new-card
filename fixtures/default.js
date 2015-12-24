@@ -63,7 +63,11 @@ module.exports = _.merge({
              */
             input: {
                 //Replace VAR1 with the name of an expected input, and add more inputs as needed.
-                VAR1: 'foo'
+                name: 'R2 D2',
+                //due: "2015-12-24T10:24:27.674Z",
+                idList: "562897d80480e122de438725",
+                urlSource: "http://shazoo.ru/",
+                pos: "557055"
             }
         }
     }

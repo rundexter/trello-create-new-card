@@ -1,12 +1,13 @@
 {
-    "name": "trello-create-new-card",
-    "version": "0.0.1",
-    "description": "",
-    "main": "index.js",
-    "author": "Alexander",
-    "license": "ISC",
-    "private": true,
-    "dependencies": {
-        "lodash": "^3.9.3"
-    }
+  "name": "trello-get_user_boards",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "author": "Nikolay",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "node-trello": "^1.1.2"
+  }
 }

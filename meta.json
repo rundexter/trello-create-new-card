@@ -5,22 +5,55 @@
     //Required. Inputs the module expects.
     "inputs": [
         //e.g.
-        /*
         {
-            "id": "from",
-            "title":"From"
+            "id": "name",
+            "title":"Name"
+        },
+        {
+            "id": "due",
+            "title":"Due"
+        },
+        {
+            "id": "idList",
+            "title":"List ID"
+        },
+        {
+            "id": "urlSource",
+            "title":"URL Source"
+        },
+        {
+            "id": "pos",
+            "title":"Position"
+        },
+        {
+            "id": "idLabels",
+            "title":"Labels"
+        },
+        {
+            "id": "fileSource",
+            "title":"File Source"
+        },
+        {
+            "id": "idMembers",
+            "title":"Members"
         }
-        */
     ],
     //Required. Outputs the module emits.
     "outputs": [
       //e.g.
-      /*
         {
-            "id": "from",
-            "title":"From"
+            "id": "id",
+            "title":"ID"
+        },
+        {
+            "id": "name",
+            "title":"Name"
+        },
+        {
+            "id": "idList",
+            "title":"List ID"
         }
-      */
     ],
+    "icon": "trello",
     "title": "Trello Create New Card" /* Required.A display name for the module */
 }
