@@ -54,6 +54,12 @@
             "title":"List ID"
         }
     ],
+    "providers": [{
+        "name": "trello",
+        "scopes": [
+            "Write"
+        ]
+    }],
     "icon": "trello",
     "title": "Trello Create New Card" /* Required.A display name for the module */
 }

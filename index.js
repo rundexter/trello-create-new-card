@@ -3,13 +3,13 @@ var trello = require('node-trello'),
     util = require('./util'),
     pickInputs = {
         name: 'name',
-        due: "due",
-        idList: "idList",
-        urlSource: "urlSource",
-        pos: "pos",
-        idLabels: "idLabels",
-        fileSource: "fileSource",
-        idMembers: "idMembers"
+        due: 'due',
+        idList: { key: 'idList', validate: { req: true, check: 'checkAlphanumeric' } },
+        urlSource: { key: 'urlSource', validate: { req: true,  check: 'checkUrl' } },
+        pos: 'pos',
+        idLabels: 'idLabels',
+        fileSource: 'fileSource',
+        idMembers: 'idMembers'
     },
     pickOutputs = {
         id: 'id',
@@ -37,25 +37,17 @@ module.exports = {
      * @param {AppData} dexter Container for all data used in this workflow.
      */
     run: function(step, dexter) {
-        var auth = this.authOptions(dexter);
+        var credentials = dexter.provider('trello').credentials(),
+            t = new trello(_.get(credentials, 'consumer_key'), _.get(credentials, 'access_token')),
+            inputs = util.pickInputs(step, pickInputs),
+            validationErrors = util.checkValidateErrors(inputs, pickInputs);
 
-        if (!auth) return;
-
-        var t = new trello(auth.api_key, auth.token);
-        var inputs = util.pickStringInputs(step, pickInputs);
-
-        if (_.isEmpty(inputs.idList))
-            return this.fail('A [idList] variable is required for this module ');
-
-        if (!_.isEmpty(inputs.urlSource) && !util.checkUrl(inputs.urlSource))
-            return this.fail('Source URL is not valid');
-
-        if (!util.checkAlphanumeric(inputs.idList))
-            return this.fail("List id is not valid");
+        if (validationErrors)
+            return this.fail(validationErrors);
 
         t.post("/1/cards", inputs, function(err, data) {
             if (!err) {
-                this.complete(util.pickResult(data, pickOutputs));
+                this.complete(util.pickOutputs(data, pickOutputs));
             } else {
                 this.fail(err);
             }
